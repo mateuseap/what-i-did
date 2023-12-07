@@ -5,9 +5,10 @@ import { toast } from "react-toastify";
 
 export interface MemberDetailsCardProps {
   member: Member;
+  refecthMember: () => void;
 }
 
-function MemberDetailsCard({ member }: MemberDetailsCardProps) {
+function MemberDetailsCard({ member, refecthMember }: MemberDetailsCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newWhatIDid, setNewWhatIDid] = useState("");
   const [isRequestRunning, setIsRequestRunning] = useState(false);
@@ -44,12 +45,18 @@ function MemberDetailsCard({ member }: MemberDetailsCardProps) {
       },
       body: JSON.stringify(data),
     })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response;
+      })
       .then(() => {
         closeModal();
         setIsRequestRunning(false);
         toast.dismiss();
         toast.success(
-          "Sucesso ao atualizar! A página será recarregada em instantes.",
+          "Sucesso! Os dados serão atualizados na página em alguns segundos.",
           {
             position: "bottom-center",
             autoClose: 4000,
@@ -60,14 +67,15 @@ function MemberDetailsCard({ member }: MemberDetailsCardProps) {
         );
 
         setTimeout(() => {
-          window.location.reload();
-        }, 5000);
+          refecthMember();
+        }, 3000);
       })
       .catch(() => {
         closeModal();
         setIsRequestRunning(false);
+        toast.dismiss();
         toast.error(
-          "Ocorreu um erro ao atualizar. Tente novamente mais tarde.",
+          "Ocorreu um erro. Tente novamente mais tarde.",
           {
             position: "bottom-center",
             autoClose: 4000,

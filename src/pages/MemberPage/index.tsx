@@ -14,6 +14,7 @@ function MemberPage() {
   const [isError, setIsError] = useState(false);
 
   const fetchMember = async () => {
+    setLoading(true);
     try {
       const response = await fetch(
         `https://cat-lover.meap0187.repl.co/members/${id}`
@@ -40,9 +41,9 @@ function MemberPage() {
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-black">
-              What I did
+              What I did <span className="emotion-transition" />
             </h2>
-            <p className="font-light text-gray-500 lg:mb-16 sm:text-xl mx-10">
+            <p className="font-light text-gray-500 lg:mb-16 sm:text-xl">
               O que foi feito ao longo da semana pelos integrantes da nossa
               equipe da disciplina de Projetão, ministrada no CIn/UFPE!
             </p>
@@ -67,7 +68,10 @@ function MemberPage() {
             ) : (
               <>
                 {member ? (
-                  <MemberDetailsCard member={member} />
+                  <MemberDetailsCard
+                    member={member}
+                    refecthMember={fetchMember}
+                  />
                 ) : (
                   <p>
                     {isError
