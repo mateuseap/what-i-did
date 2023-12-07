@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  background: #eeeeee;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #dfdfdf;
+  border-radius: 14px;
+}
+
+html, body {
+  height: 100%;
+}
+
+@keyframes emoticonAnimation {
+  0% {
+    content: ':)';
+  }
+  50% {
+    content: ';)';
+  }
+  100% {
+    content: ':)';
+  }
+}
+
+.emotion-transition::before {
+  content: ':)';
+  display: inline-block;
+  animation: emoticonAnimation 4s linear infinite;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../public/fonts/Satoshi.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    background-color: white;
+    color: black;
+  }
+}
