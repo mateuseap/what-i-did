@@ -3,7 +3,7 @@ import { Member } from "../../types";
 import { useParams } from "react-router";
 import MemberDetailsCard from "../../components/MemberDetailsCard";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function MemberPage() {
