@@ -14,7 +14,7 @@ function Home() {
   const fetchMembers = async () => {
     try {
       const response = await fetch(
-        "https://cat-lover.meap0187.repl.co/members"
+        "https://what-i-did.meap0187.repl.co/members"
       );
       const data = await response.json();
       setMembers(data.members);

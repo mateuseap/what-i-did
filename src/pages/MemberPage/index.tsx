@@ -17,7 +17,7 @@ function MemberPage() {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://cat-lover.meap0187.repl.co/members/${id}`
+        `https://what-i-did.meap0187.repl.co/members/${id}`
       );
       const data = await response.json();
       setMember(data.member);

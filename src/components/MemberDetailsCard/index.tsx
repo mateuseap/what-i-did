@@ -38,7 +38,7 @@ function MemberDetailsCard({ member, refecthMember }: MemberDetailsCardProps) {
       progress: undefined,
     });
 
-    fetch("https://cat-lover.meap0187.repl.co/what-i-did", {
+    fetch("https://what-i-did.meap0187.repl.co/what-i-did", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
